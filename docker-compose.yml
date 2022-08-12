@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  bantads-db:
+    image: postgres:12-alpine3.16
+    restart: always
+    container_name: bantads-db
+    environment:
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - 5432:5432
+    networks:
+      - bantads-net
+    volumes:
+      - bantads_data:/var/lib/postgresql/data
+  
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - bantads-net
+
+networks:
+  bantads-net:
+    driver: bridge
+    external: true
+
+volumes:
+  bantads_data:
