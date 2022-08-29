@@ -11,6 +11,7 @@ Objeto enviado BODY: Usuario
 }
 Objeto recebido: Usuario 200 OK + token (admin) | null 401
 {
+    id: "uuid",
     email: "teste@mail.com",
     senha: "blabla",
     tipoUsuario: <Gerente | Admin | Cliente>
@@ -19,6 +20,24 @@ Objeto recebido: Usuario 200 OK + token (admin) | null 401
 
 ================== Após login com sucesso o componente correspondente é carregado
 ================== Com isso outras requisições são disparadas
+
+============ Primeiro disparo - para todos os logins
+== Após login, o objeto completo associado com o usuário será buscado
+= Todos seguem o mesmo padrão (gerentes retorna Gerente, admins Admin, etc)
+## gerentes/getByUsuarioId/:id
+GET
+Header: token (gerente)
+Objeto enviado ROUTE: id (string)
+gerentes/getByUsuarioId/ajksdg790asd5
+Objeto recebido: Gerente
+{
+    id: "uuid",
+    nome: "",
+    cpf: "",
+    qtdClientes: 5,
+    totalSaldoPositivo: "",
+    totalSaldoNegativo: ""
+}
 
 ============ Área de Admin
 == Tela Inicial
@@ -128,14 +147,48 @@ GET
 Header: token (gerente)
 Objeto enviado BODY: null
 {}
-Objeto recebido: Clientes[] 200 OK (se não existir retornar lista vazia, sem erros)
+Objeto recebido: Analise[] 200 OK (se não existir retornar lista vazia, sem erros)
 [
     {
-        usuario: null,                   // nao precisa disso, se for + facil volta null
-        id: "uuid",
-        TODO - MODIFICAR PROJETO PRINCIPAL
+        id: "",
+        aprovacao: 1,
+        motivo: "",
+        dataHora: "",
+        cliente: { ... },
+        gerente: { ... }
+    },
+    {
+        id: "",
+        aprovacao: 1,
+        motivo: "",
+        dataHora: "",
+        cliente: { ... },
+        gerente: { ... }
     }
 ]
+
+## clientes/aprovar/:id - HomeGerenteComponent
+// TODO rever esse método
+PUT (para modificar cliente para aprovado) ==> API gateway/orquestrador já faz criação de conta em seguida, ou front irá mandar separado?
+Header: token (gerente)
+Objeto enviado ROUTE: idCliente (string)
+clientes/aprovar/54d6as54sd
+Objeto recebido: null 200 OK | erro
+
+## clientes/reprovar - HomeGerenteComponent
+// TODO rever esse método
+PUT (para modificar cliente para reprovado) ==> faz algo em seguida?
+Header: token (gerente)
+Objeto enviado BODY: Analise
+{
+    id: "",
+    aprovacao: 1,
+    motivo: "",
+    dataHora: "",
+    cliente: { ... },
+    gerente: { ... }
+}
+Objeto recebido: null 200 OK | erro
 
 ============ Área de Cliente
 == Tela Inicial
