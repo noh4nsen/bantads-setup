@@ -50,7 +50,8 @@ CREATE TABLE Conta(
 	saldo decimal(9,2),
 	datacriacao date,
 	limite decimal(9,2),
-	idCliente int
+	idCliente int,
+	idGerente int
 )
 CREATE TABLE Movimentacao (
 	id SERIAL Primary Key,
@@ -70,7 +71,8 @@ CREATE TABLE Conta(
 	saldo decimal(9,2),
 	datacriacao date,
 	limite decimal(9,2),
-	idCliente int
+	idCliente int,
+	idGerente int
 )
 CREATE TABLE Movimentacao (
 	id SERIAL Primary Key,
