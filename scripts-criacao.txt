@@ -46,10 +46,10 @@ CREATE TABLE Cliente (
 CREATE DATABASE ContaCUD;
 CREATE TABLE Conta(
 	id SERIAL Primary Key,
-	numero long,
+	numero serial,
 	saldo decimal(9,2),
 	datacriacao date,
-	limite decimal(9,2)
+	limite decimal(9,2),
 	idCliente int
 )
 CREATE TABLE Movimentacao (
@@ -69,7 +69,7 @@ CREATE TABLE Conta(
 	numero long,
 	saldo decimal(9,2),
 	datacriacao date,
-	limite decimal(9,2)
+	limite decimal(9,2),
 	idCliente int
 )
 CREATE TABLE Movimentacao (
