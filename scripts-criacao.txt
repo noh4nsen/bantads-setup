@@ -45,13 +45,13 @@ CREATE TABLE Cliente (
 -------------------------
 CREATE DATABASE ContaCUD;
 CREATE TABLE Conta(
-	id SERIAL Primary Key,
-	numero serial,
+	id UUID Primary key not null,
+	numero SERIAL,
 	saldo decimal(9,2),
 	datacriacao date,
 	limite decimal(9,2),
-	idCliente int,
-	idGerente int
+	idCliente UUID,
+	idGerente UUID
 )
 CREATE TABLE Movimentacao (
 	id SERIAL Primary Key,
@@ -66,13 +66,13 @@ CREATE TABLE Movimentacao (
 -------------------------
 CREATE DATABASE ContaR;
 CREATE TABLE Conta(
-	id SERIAL Primary Key,
-	numero long,
+	id UUID Primary key not null,
+	numero SERIAL,
 	saldo decimal(9,2),
 	datacriacao date,
 	limite decimal(9,2),
-	idCliente int,
-	idGerente int
+	idCliente UUID,
+	idGerente UUID
 )
 CREATE TABLE Movimentacao (
 	id SERIAL Primary Key,
