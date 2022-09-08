@@ -65,7 +65,7 @@ CREATE TABLE Movimentacao (
 )
 -------------------------
 CREATE DATABASE ContaR;
-CREATE TABLE Conta(
+CREATE TABLE ContaRead(
 	id UUID Primary key not null,
 	numero SERIAL,
 	saldo decimal(9,2),
@@ -74,7 +74,7 @@ CREATE TABLE Conta(
 	idCliente UUID,
 	idGerente UUID
 )
-CREATE TABLE Movimentacao (
+CREATE TABLE MovimentacaoRead (
 	id SERIAL Primary Key,
 	valor decimal(9,2),
 	datahora date,
