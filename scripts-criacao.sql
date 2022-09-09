@@ -70,7 +70,7 @@ CREATE TABLE Movimentacao (
 	tipomovimentacao int,
 	origem UUID not null,
 	destino UUID,
-	saga UUID
+	saga UUID,
 	CONSTRAINT fk_contaorigem FOREIGN KEY(origem) REFERENCES Conta(id),
 	CONSTRAINT fk_contadestino FOREIGN KEY(destino) REFERENCES Conta(id)
 )
