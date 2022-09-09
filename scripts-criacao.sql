@@ -60,8 +60,8 @@ CREATE TABLE Conta(
 	saldo decimal(9,2),
 	datacriacao date,
 	limite decimal(9,2),
-	idCliente UUID not null,
-	idGerente UUID not null,
+	idExternoCliente UUID not null,
+	idExternoGerente UUID not null,
 	saga UUID
 )
 CREATE TABLE Movimentacao (
