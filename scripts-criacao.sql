@@ -3,7 +3,7 @@ CREATE DATABASE Autenticacao;
 CREATE TABLE usuario (
 	id UUID primary key,
 	email varchar(50) unique not null,
-	senha varchar(500) not null,
+	senha varchar(500),
 	tipo_usuario varchar(15),
 	saga UUID
 )
@@ -36,12 +36,13 @@ CREATE TABLE Analise(
 	aprovado boolean,
 	motivo varchar(400),
 	datahora date,
-	idExternoGerente UUID not null,
+	idExternoGerente UUID,
 	saga UUID
 )
 CREATE TABLE Cliente (
 	id UUID Primary Key,
-	cpf varchar(11) unique,
+	nome varchar(50) not null,
+	cpf varchar(11) unique not null,
 	salario decimal(9,2),
 	idExternoUsuario UUID not null,
 	idEndereco UUID not null,
