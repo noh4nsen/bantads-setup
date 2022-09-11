@@ -18,4 +18,10 @@ curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/movimentacao-ins
 curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/nova-conta -u "guest:guest" --data-raw '{"durable": true}'
 curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/nova-conta-rollback    -u "guest:guest" --data-raw '{"durable": true}'
 curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/nova-senha-rollback    -u "guest:guest" --data-raw '{"durable": true}'
+curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/delete-gerente    -u "guest:guest" --data-raw '{"durable": true}'
+curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/delete-gerente-conta    -u "guest:guest" --data-raw '{"durable": true}'
+curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/delete-gerente-conta-rollback    -u "guest:guest" --data-raw '{"durable": true}'
+curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/delete-usuario    -u "guest:guest" --data-raw '{"durable": true}'
+curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/delete-usuario-rollback    -u "guest:guest" --data-raw '{"durable": true}'
+curl -X DELETE http://host.docker.internal:15672/api/queues/%2F/delete-gerente-rollback    -u "guest:guest" --data-raw '{"durable": true}'
 

@@ -2,9 +2,10 @@ CREATE DATABASE Autenticacao;
 
 CREATE TABLE usuario (
 	id UUID primary key,
-	email varchar(50) unique not null,
+	email varchar(50) not null,
 	senha varchar(500),
 	tipo_usuario varchar(15),
+	ativo boolean,
 	saga UUID
 )
 --------------------------
@@ -15,6 +16,7 @@ CREATE TABLE gerente (
 	idExternoUsuario UUID not null,
 	nome varchar(60) not null,
 	cpf varchar(11) unique not null,
+	ativo boolean,
 	saga UUID
 )
 --------------------------
@@ -39,6 +41,7 @@ CREATE TABLE Analise(
 	idExternoGerente UUID,
 	saga UUID
 )
+
 CREATE TABLE Cliente (
 	id UUID Primary Key,
 	nome varchar(50) not null,
@@ -51,6 +54,7 @@ CREATE TABLE Cliente (
 	CONSTRAINT fk_endereco FOREIGN KEY(idEndereco) REFERENCES Endereco(id),
 	CONSTRAINT fk_analise FOREIGN KEY(idAnalise) REFERENCES Analise(id)
 )
+
 -------------------------
 CREATE DATABASE ContaCUD;
 
@@ -64,6 +68,7 @@ CREATE TABLE Conta(
 	idExternoGerente UUID not null,
 	saga UUID
 )
+
 CREATE TABLE Movimentacao (
 	id UUID Primary Key,
 	valor decimal(9,2),
@@ -75,6 +80,7 @@ CREATE TABLE Movimentacao (
 	CONSTRAINT fk_contaorigem FOREIGN KEY(origem) REFERENCES Conta(id),
 	CONSTRAINT fk_contadestino FOREIGN KEY(destino) REFERENCES Conta(id)
 )
+
 -------------------------
 CREATE DATABASE ContaR;
 
@@ -88,6 +94,7 @@ CREATE TABLE Conta(
 	idExternoGerente UUID not null,
 	saga UUID
 )
+
 CREATE TABLE Movimentacao (
 	id UUID Primary Key,
 	valor decimal(9,2),
@@ -106,5 +113,6 @@ CREATE TABLE gerenteconta (
 	quantidadecontas int,
 	saldopositivo decimal(9,2),
 	saldonegativo decimal(9,2),
+	ativo boolean,
 	saga UUID
 )
